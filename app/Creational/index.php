@@ -2,17 +2,12 @@
 
 namespace App\Creational;
 
-use App\Creational\AbstractFactory\IronDoorFactory;
-use App\Creational\AbstractFactory\WoodenDoorFactory;
-use App\Creational\Builder\ConcreteBuilder1;
-use App\Creational\Builder\Director;
-use App\Creational\FactoryMethod\DevelopmentManager;
-use App\Creational\FactoryMethod\MarketingManager;
+use App\Creational\AbstractFactory\{IronDoorFactory, WoodenDoorFactory};
+use App\Creational\Builder\{ConcreteBuilder1, Director};
+use App\Creational\FactoryMethod\{DevelopmentManager, MarketingManager};
 use App\Creational\Multiton\Multiton;
-use App\Creational\Pool\Worker;
 use App\Creational\Pool\WorkerPool;
-use App\Creational\Prototype\Author;
-use App\Creational\Prototype\Page;
+use App\Creational\Prototype\{Author, Page};
 use App\Creational\SimpleFactory\DoorFactory;
 use App\Creational\Singleton\Singleton;
 
@@ -78,16 +73,16 @@ function builder(Director $director): void
     $builder = new ConcreteBuilder1();
     $director->setBuilder($builder);
 
-    echo "Standard basic product:\n";
+    echo "Standard basic product:" . PHP_EOL;
     $director->buildMinimalViableProduct();
     $builder->getProduct()->listParts();
 
-    echo "Standard full featured product:\n";
+    echo "Standard full featured product:"  . PHP_EOL;
     $director->buildFullFeaturedProduct();
     $builder->getProduct()->listParts();
 
     // Использование без директора
-    echo "Custom product:\n";
+    echo "Custom product:"  . PHP_EOL;
     $builder->producePartA();
     $builder->producePartC();
     $builder->getProduct()->listParts();
@@ -101,7 +96,7 @@ function prototype(): void
     $page->addComment("Nice tip, thanks!");
 
     $draft = clone $page;
-    echo "Dump of the clone. Note that the author is now referencing two objects.\n\n";
+    echo "Dump of the clone. Note that the author is now referencing two objects." . PHP_EOL . PHP_EOL;
     var_dump($draft);
 }
 
