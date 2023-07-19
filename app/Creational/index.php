@@ -100,7 +100,7 @@ function prototype(): void
     var_dump($draft);
 }
 
-function worker(): void
+function pool(): void
 {
     $pool = new WorkerPool();
 
@@ -121,4 +121,4 @@ function worker(): void
 //multiton();
 //builder(new Director());
 //prototype();
-//worker();
+//pool();
